@@ -8,7 +8,7 @@ def start(message):
     btn1 = types.KeyboardButton("/wiki")
     markup.add(btn1)
     # bot.send_message(message.chat.id, text="Дарова ".format(message.from_user),reply_markup=markup)
-    bot.send_message(message.chat.id, text="Привет, {0.first_name}!Выбери, что нужно сделать ".format(message.from_user),reply_markup=markup)
+    bot.send_message(message.chat.id, text="Hello, {0.first_name}! click on the wiki button to find the word ".format(message.from_user),reply_markup=markup)
 
 def getwiki(s):
     try:
@@ -33,12 +33,12 @@ def getwiki(s):
         return wikitext2
 
     except Exception as e:
-        return 'В энциклопедии нет информации об этом'
+        return 'No information found'
 
 
 @bot.message_handler(commands=["wiki"])
 def wiki(m, res=False):
-    bot.send_message(m.chat.id, 'Отправьте мне любое слово, и я найду его значение на Wikipedia')
+    bot.send_message(m.chat.id, 'Write me any word and I will find its meaning on Wikipedia')
 
 @bot.message_handler(content_types=["text"])
 def handle_text(message):
@@ -46,8 +46,3 @@ def handle_text(message):
 
 
 bot.polling(none_stop=True, interval=0)
-
-
-
-
-
